@@ -1,0 +1,4 @@
+name = "medica-practice-sie"
+compatibility_date = "2026-01-05"
+
+assets = { directory = "./dist" }
