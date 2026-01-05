@@ -1,0 +1,41 @@
+// Colors
+$color-primary: #0056b3;
+$color-primary-light: #e6f0fa;
+$color-secondary: #00a8cc;
+$color-text: #333333;
+$color-text-light: #666666;
+$color-bg: #ffffff;
+$color-bg-alt: #f8f9fa;
+$color-white: #ffffff;
+$color-error: #dc3545;
+
+// Breakpoints
+$mobile: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+$wide: 1200px;
+
+// Mixins
+@mixin mobile {
+  @media (max-width: #{$tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet}) and (max-width: #{$desktop - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}

@@ -1,0 +1,166 @@
+@import "@/styles/variables.scss";
+
+.about {
+  padding: 4rem 0;
+
+  &__container {
+    @include container;
+  }
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-bottom: 5rem;
+    align-items: center;
+
+    @include desktop {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  &__text {
+    flex: 1;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: $color-primary;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      color: $color-text;
+      font-size: 1.1rem;
+    }
+  }
+
+  &__image {
+    flex: 0 0 350px;
+    width: 100%;
+    max-width: 400px;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 1rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.timeline {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2rem;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 80px; // Offset for title
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(
+      180deg,
+      $color-primary 0%,
+      rgba($color-primary, 0.2) 100%
+    );
+
+    @include tablet {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-left: 3rem;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 0;
+
+      &:nth-child(even) {
+        flex-direction: row-reverse;
+        text-align: right;
+
+        .timeline__content {
+          align-items: flex-end;
+        }
+
+        .timeline__year {
+          text-align: left;
+          padding-left: 2rem;
+          padding-right: 0;
+        }
+      }
+
+      &:nth-child(odd) {
+        .timeline__year {
+          text-align: right;
+          padding-right: 2rem;
+        }
+      }
+    }
+  }
+
+  &__marker {
+    position: absolute;
+    left: 11px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: $color-primary;
+    border-radius: 50%;
+    border: 4px solid $color-white;
+    box-shadow: 0 0 0 2px $color-primary;
+    z-index: 1;
+
+    @include tablet {
+      left: 50%;
+      transform: translateX(-50%);
+      top: 50%;
+      margin-top: -10px;
+    }
+  }
+
+  &__year {
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: $color-primary;
+    margin-bottom: 0.5rem;
+
+    @include tablet {
+      width: 45%;
+      margin-bottom: 0;
+    }
+  }
+
+  &__content {
+    background: $color-white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    border-left: 4px solid $color-secondary;
+
+    @include tablet {
+      width: 45%;
+      flex: none;
+    }
+  }
+}

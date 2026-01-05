@@ -1,0 +1,329 @@
+@import "@/styles/variables.scss";
+
+.hero {
+  background-color: $color-primary-light;
+  padding: 4rem 0;
+
+  &__container {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    text-align: left;
+
+    @include desktop {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__subtitle {
+    font-size: 1.1rem;
+    color: $color-secondary;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: $color-text;
+    line-height: 1.2;
+
+    span {
+      color: $color-primary;
+    }
+  }
+
+  &__text {
+    font-size: 1.125rem;
+    color: $color-text;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__imageWrapper {
+    flex: 0 0 40%;
+    display: flex;
+    justify-content: center;
+
+    img {
+      max-width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
+    }
+  }
+}
+
+.section {
+  padding: 5rem 0;
+
+  &--alt {
+    background-color: $color-bg-alt;
+  }
+
+  &__container {
+    @include container;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: $color-primary;
+    }
+
+    p {
+      color: $color-text-light;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.teaser {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+
+  @include desktop {
+    flex-direction: row;
+    text-align: left;
+
+    // Reverse order on desktop if needed, or keep standard
+    &__content {
+      flex: 1;
+      padding-right: 2rem;
+    }
+
+    &__image {
+      flex: 1;
+    }
+  }
+
+  &__content {
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: $color-primary;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+      color: $color-text-light;
+    }
+  }
+
+  &__image {
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 1rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.servicesList {
+  display: grid;
+  gap: 1rem;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &__item {
+    background: $color-white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    // Bullet point or icon styles
+    &::before {
+      content: "";
+      display: block;
+      width: 8px;
+      height: 8px;
+      background-color: $color-secondary;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+  }
+}
+
+.timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: $color-primary-light;
+
+    @include tablet {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-left: 2rem;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 0;
+
+      &:nth-child(odd) {
+        flex-direction: row-reverse;
+        text-align: right;
+
+        .timeline__content {
+          align-items: flex-end;
+        }
+      }
+    }
+  }
+
+  &__marker {
+    position: absolute;
+    left: -5px;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    background-color: $color-primary;
+    border-radius: 50%;
+    border: 2px solid $color-white;
+    box-shadow: 0 0 0 2px $color-primary-light;
+
+    @include tablet {
+      left: 50%;
+      transform: translateX(-50%);
+      top: 50%;
+      margin-top: -6px;
+    }
+  }
+
+  &__year {
+    font-weight: 700;
+    color: $color-secondary;
+    margin-bottom: 0.25rem;
+
+    @include tablet {
+      width: 45%;
+    }
+  }
+
+  &__content {
+    background: $color-white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    flex: 1;
+
+    @include tablet {
+      width: 45%;
+      flex: none;
+    }
+  }
+}
+
+.contactGrid {
+  display: grid;
+  gap: 2rem;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contactCard {
+  background: $color-white;
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid $color-primary-light;
+  text-align: center;
+
+  h3 {
+    color: $color-primary;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  address {
+    font-style: normal;
+    color: $color-text;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+
+    a {
+      color: $color-text;
+      font-weight: 500;
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+.hours {
+  margin-top: 3rem;
+  text-align: center;
+  background-color: $color-bg-alt;
+  padding: 2rem;
+  border-radius: 0.5rem;
+
+  h3 {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: $color-text-light;
+    font-size: 1.1rem;
+  }
+}
